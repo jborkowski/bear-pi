@@ -61,3 +61,4 @@ node_modules/
 dist/
 build/
 out/
+.pi/settings.json
