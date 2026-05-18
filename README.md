@@ -1,4 +1,4 @@
-.pi/settings.json` # Bear Pi Extension
+# Bear Pi Extension
 
 A Pi extension that integrates Bear notes through the Bear macOS CLI. 
 
