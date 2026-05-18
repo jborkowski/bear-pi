@@ -1,0 +1,24 @@
+{
+  "name": "bear-pi",
+  "version": "1.0.0",
+  "description": "Pi extension for Bear notes via bearcli",
+  "main": "src/index.ts",
+  "pi": {
+    "extensions": [
+      "src/index.ts"
+    ]
+  },
+  "scripts": {
+    "lint": "oxlint",
+    "test": "bun test/smoke.test.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "latest",
+    "@sinclair/typebox": "^0.32.15"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "oxlint": "^1.65.0",
+    "typescript": "^5.3.3"
+  }
+}
