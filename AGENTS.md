@@ -6,7 +6,7 @@ Pi extension that integrates Bear notes via the Bear macOS CLI (`bearcli`). Type
 
 - `src/index.ts` - Extension entry point. Validates bearcli availability, registers tools.
 - `src/bearcli.ts` - Adapter over `/Applications/Bear.app/Contents/MacOS/bearcli`. Singleton `BearCLI` class with async methods for each CLI subcommand.
-- `src/tools.ts` - Registers Pi tools (`bear_search`, `bear_list`, `bear_read`, `bear_create`, `bear_update`, `bear_open`). Each tool wraps a `bearcli` method.
+- `src/tools.ts` - Registers Pi tools: `bear_search`, `bear_list`, `bear_read`, `bear_create`, `bear_update`, `bear_append`, `bear_edit`, `bear_tags_*`, `bear_trash`, `bear_archive`, `bear_restore`, `bear_search_in`, `bear_attachments_*`, `bear_open`.
 - `test/smoke.test.ts` - Basic smoke test.
 
 <important if="you need to run commands to build, test, or lint">
