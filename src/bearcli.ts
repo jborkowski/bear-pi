@@ -106,6 +106,23 @@ export class BearCLI {
     await this.execCmd(['overwrite', id], content);
   }
 
+  async append(params: { id?: string; title?: string; content: string; position?: 'beginning' | 'end'; noUpdateModified?: boolean }): Promise<void> {
+    const args = ['append'];
+    if (params.id) {
+      args.push(params.id);
+    }
+    if (params.title) {
+      args.push('--title', params.title);
+    }
+    if (params.position) {
+      args.push('--position', params.position);
+    }
+    if (params.noUpdateModified) {
+      args.push('--no-update-modified');
+    }
+    await this.execCmd(args, params.content);
+  }
+
   async open(id: string): Promise<void> {
     await this.execCmd(['open', id]);
   }

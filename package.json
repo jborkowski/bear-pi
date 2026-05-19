@@ -1,6 +1,6 @@
 {
   "name": "bear-pi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Pi extension for Bear notes via bearcli",
   "main": "src/index.ts",
   "pi": {

@@ -88,6 +88,34 @@ export function registerBearTools(pi: ExtensionAPI) {
   });
 
   pi.registerTool({
+    name: "bear_append",
+    label: "Bear Append to Note",
+    description: "Append or prepend content to an existing Bear note.",
+    promptSnippet: "Append content to a Bear note",
+    parameters: Type.Object({
+      id: Type.Optional(Type.String({ description: "Note ID. Use this or title." })),
+      title: Type.Optional(Type.String({ description: "Case-insensitive note title. Use this or id." })),
+      content: Type.String({ description: "Content to append or prepend to the note." }),
+      position: Type.Optional(Type.String({ description: "Where to insert: 'end' (default) or 'beginning'." })),
+      noUpdateModified: Type.Optional(Type.Boolean({ description: "Preserve the note's modification date." }))
+    }),
+    async execute(_id, params) {
+      await bearcli.append({
+        id: params.id,
+        title: params.title,
+        content: params.content,
+        position: params.position as 'beginning' | 'end' | undefined,
+        noUpdateModified: params.noUpdateModified
+      });
+      const target = params.id ?? params.title ?? 'note';
+      const pos = params.position === 'beginning' ? 'prepended to' : 'appended to';
+      return {
+        content: [{ type: "text", text: `Content ${pos} ${target} successfully.` }],
+      };
+    }
+  });
+
+  pi.registerTool({
     name: "bear_open",
     label: "Bear Open Note",
     description: "Open a Bear note in the Bear app.",
