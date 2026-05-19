@@ -180,7 +180,7 @@ export function registerBearTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       noteId: Type.Optional(Type.String({ description: "Note ID. Use this or title." })),
       title: Type.Optional(Type.String({ description: "Case-insensitive note title. Use this or noteId." })),
-      tags: Type.Array(Type.String(), { description: "Tag names to add (without #)." })
+      tags: Type.Array(Type.String(), { minItems: 1, description: "Tag names to add (without #)." })
     }),
     async execute(_id, params) {
       await bearcli.tagsAdd(params.noteId, params.title, params.tags);
@@ -199,7 +199,7 @@ export function registerBearTools(pi: ExtensionAPI) {
     parameters: Type.Object({
       noteId: Type.Optional(Type.String({ description: "Note ID. Use this or title." })),
       title: Type.Optional(Type.String({ description: "Case-insensitive note title. Use this or noteId." })),
-      tags: Type.Array(Type.String(), { description: "Tag names to remove (without #)." })
+      tags: Type.Array(Type.String(), { minItems: 1, description: "Tag names to remove (without #)." })
     }),
     async execute(_id, params) {
       await bearcli.tagsRemove(params.noteId, params.title, params.tags);
